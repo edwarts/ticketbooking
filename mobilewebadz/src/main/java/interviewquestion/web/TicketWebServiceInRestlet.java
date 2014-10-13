@@ -9,7 +9,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-public class TicketWebServiceInRestlet implements ITicketWebService {
+import org.restlet.resource.ServerResource;
+
+public class TicketWebServiceInRestlet extends ServerResource implements ITicketWebService {
 
 	private static ITicketPoolBLL _ITicketPoolBLL;
 	private static ITicketWebService _ticketWebService;
@@ -39,8 +41,8 @@ public class TicketWebServiceInRestlet implements ITicketWebService {
 	@GET
 	@Produces("text/plain")
 	public String getSeatNumbers() {
-		_ITicketPoolBLL.
-		return ;
+		return _ITicketPoolBLL.getTickets();
+		
 	}
 
 	@Override

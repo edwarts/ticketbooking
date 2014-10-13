@@ -3,7 +3,6 @@ package interviewquestion.web;
 import org.restlet.Component;
 import org.restlet.Server;
 import org.restlet.data.Protocol;
-import org.restlet.ext.jaxrs.JaxRsApplication;
 
 public class TicketBookingMain {
 
@@ -14,9 +13,23 @@ public class TicketBookingMain {
 		Component ticketServerComponent=new Component();
 		Server ticketServer=ticketServerComponent.getServers().add(Protocol.HTTP,8000);
 		// Setup the Booking ticket environment
-		JaxRsApplication bookingServerApplicaiton=new JaxRsApplication();
-		bookingServerApplicaiton.add(new );
+	    ticketServerComponent.getDefaultHost().attach(new TicketBookingApp());
+	    try {
+			ticketServerComponent.start();
+			//Debug Info
 
+
+	        System.out.println("Server started on port " + ticketServer.getPort());
+	        System.out.println("Press key to stop server");
+	        System.in.read();
+	        System.out.println("Stopping server");
+	        ticketServerComponent.stop();
+	        System.out.println("Server stopped");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

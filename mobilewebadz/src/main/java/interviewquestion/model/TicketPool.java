@@ -1,7 +1,6 @@
 package interviewquestion.model;
 
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.concurrent.ThreadLocalRandom;
 
 import interviewquestion.bll.ITicketPoolBLL;
@@ -61,7 +60,7 @@ public class TicketPool implements ITicketPoolBLL
 					_tickeIdRef.put(idGenerated, 1);
 					return idGenerated;
 				} catch (Exception e) {
-					return false;
+					return "";
 				}
 	}
 	@Override
