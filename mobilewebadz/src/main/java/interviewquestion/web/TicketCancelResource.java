@@ -11,7 +11,7 @@ public class TicketCancelResource extends TicketWebServiceInRestlet {
 		ticketId=getAttribute("ticketId");
 	}
 	@Put("txt")
-	public String cacnelTicket(String ticketId)
+	public String cacnelTicket()
 	{
 		return (cancelOneTicket(ticketId)==true)?"Ticket "+ticketId+"canceled!":"Fail to cancel";
 		
