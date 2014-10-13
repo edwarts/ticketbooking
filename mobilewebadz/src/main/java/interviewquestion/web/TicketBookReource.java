@@ -7,7 +7,7 @@ public class TicketBookReource extends TicketWebServiceInRestlet{
 	@Get("txt")
 	public String Booking()
 	{
-		return bookOneTicket();
+		return "{ booking:"+bookOneTicket()+"}";
 	}
 
 }

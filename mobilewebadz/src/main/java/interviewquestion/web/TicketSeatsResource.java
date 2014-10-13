@@ -8,7 +8,7 @@ public class TicketSeatsResource extends TicketWebServiceInRestlet{
 	@Get("txt")
 	public String getSeats()
 	{
-		return getSeatNumbers();
+		return "{ seats:"+getSeatNumbers()+"}";
 	}
 
 }
