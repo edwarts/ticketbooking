@@ -9,9 +9,17 @@
 
   <name>mobilewebadz</name>
   <url>http://maven.apache.org</url>
-
+<repositories>
+    <repository>
+        <id>maven-restlet</id>
+        <name>Restlet repository</name>
+        <url>http://maven.restlet.com</url>
+    </repository>
+</repositories>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <restlet-version>2.2.2</restlet-version>
+    <restlet-ext-version>1.1.9</restlet-ext-version>
   </properties>
 
   <dependencies>
@@ -20,6 +28,22 @@
       <artifactId>junit</artifactId>
       <version>4.7</version>
       <scope>test</scope>
+    </dependency>
+     <dependency>
+        <groupId>org.restlet.jse</groupId>
+        <artifactId>org.restlet</artifactId>
+        <version>${restlet-version}</version>
+    </dependency>
+    <dependency>
+    <groupId>org.restlet</groupId>
+<artifactId>org.restlet.ext.jaxrs</artifactId>
+<version>${restlet-ext-version}</version>
+
+    </dependency>
+    <dependency>
+        <groupId>org.restlet.jse</groupId>
+        <artifactId>org.restlet.ext.jackson</artifactId>
+        <version>${restlet-version}</version>
     </dependency>
   </dependencies>
 </project>
