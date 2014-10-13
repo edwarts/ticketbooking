@@ -4,7 +4,7 @@ import org.restlet.resource.Get;
 
 public class TicketBookReource extends TicketWebServiceInRestlet{
 	
-	@Get
+	@Get("txt")
 	public String Booking()
 	{
 		return bookOneTicket();

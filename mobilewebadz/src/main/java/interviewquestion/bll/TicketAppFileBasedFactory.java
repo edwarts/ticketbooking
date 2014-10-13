@@ -9,7 +9,12 @@ public class TicketAppFileBasedFactory implements ITicketFactory{
 		// TODO Auto-generated method stub
 		switch (instanceName) {
 		case "TicketPool":
-			return new TicketPool(50);
+			try {
+				return TicketPool.getTicketPool();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		default:
 			return null;
 		}

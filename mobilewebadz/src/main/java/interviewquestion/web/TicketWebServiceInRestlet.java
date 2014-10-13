@@ -43,13 +43,13 @@ public class TicketWebServiceInRestlet extends ServerResource implements ITicket
 	@Override
 	public String bookOneTicket() {
 		// TODO Auto-generated method stub
-		return null;
+		return _ITicketPoolBLL.decreaseOneTicket();
 	}
 
 	@Override
 	public boolean cancelOneTicket(String tikcetId) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return _ITicketPoolBLL.increaseOneTicket(tikcetId);      
 	}
 
 }

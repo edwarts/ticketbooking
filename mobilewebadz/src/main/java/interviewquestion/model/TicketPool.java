@@ -1,6 +1,7 @@
 package interviewquestion.model;
 
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 import interviewquestion.bll.ITicketPoolBLL;
@@ -11,7 +12,7 @@ public class TicketPool implements ITicketPoolBLL
 {
 	private static long ticketNumber=0;
 	private static TicketPool _TicketPool=null;
-	private static HashMap<String, Integer> _tickeIdRef=new HashMap<String,Integer>();
+	private static ConcurrentHashMap<String, Integer> _tickeIdRef=new ConcurrentHashMap<String,Integer>();
 
 	public TicketPool(long totalTicketNumber)
 	{
@@ -21,7 +22,7 @@ public class TicketPool implements ITicketPoolBLL
 	{
 		_TicketPool=new TicketPool(ticketPoolSize);
 	}
-	public synchronized TicketPool getTicketPool() throws Exception
+	public static TicketPool getTicketPool() throws Exception
 	{
 		if(_TicketPool==null)
 		{
@@ -34,7 +35,7 @@ public class TicketPool implements ITicketPoolBLL
 	}
 
 	@Override
-	public synchronized boolean increaseOneTicket(String ticketId) {
+	public boolean increaseOneTicket(String ticketId) {
 		// TODO Auto-generated method stub
 		try {
 			if(_tickeIdRef.containsKey(ticketId))
@@ -52,7 +53,7 @@ public class TicketPool implements ITicketPoolBLL
 		}
 	}
 	@Override
-	public synchronized String decreaseOneTicket() {
+	public String decreaseOneTicket() {
 		// TODO Auto-generated method stub
 				try {
 					ticketNumber--;

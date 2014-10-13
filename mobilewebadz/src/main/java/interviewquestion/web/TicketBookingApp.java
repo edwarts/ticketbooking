@@ -14,7 +14,7 @@ public class TicketBookingApp extends Application {
 	 Router router = new Router(getContext());
 	 router.attach("/seat", TicketWebServiceInRestlet.class);
 	 router.attach("/seat/book", TicketBookReource.class);
-	 router.attach("/seat/cancel/{tikcetId}", TicketWebServiceInRestlet.class);
+	 router.attach("/seat/cancel/{ticketId}", TicketCancelResource.class);
 	 return router;
 	}
 	
