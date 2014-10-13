@@ -8,13 +8,14 @@ public class TicketBookingMain {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		//System.out.println("Hello");
 		//Make an instance of Server Component
-		Component ticketServerComponent=new Component();
-		Server ticketServer=ticketServerComponent.getServers().add(Protocol.HTTP,8000);
-		// Setup the Booking ticket environment
-	    ticketServerComponent.getDefaultHost().attach(new TicketBookingApp());
+	
 	    try {
+	    	Component ticketServerComponent=new Component();
+			Server ticketServer=ticketServerComponent.getServers().add(Protocol.HTTP,8000);
+		    ticketServerComponent.getDefaultHost().attach(new TicketBookingApp());
+			// Setup the Booking ticket environment
 			ticketServerComponent.start();
 			//Debug Info
 
@@ -31,5 +32,6 @@ public class TicketBookingMain {
 			e.printStackTrace();
 		}
 	}
+	
 
 }

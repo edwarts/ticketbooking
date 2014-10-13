@@ -5,10 +5,7 @@ import interviewquestion.bll.ITicketPoolBLL;
 import interviewquestion.bll.TicketAppFileBasedFactory;
 import interviewquestion.model.TicketPool;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-
+import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
 public class TicketWebServiceInRestlet extends ServerResource implements ITicketWebService {
@@ -36,10 +33,8 @@ public class TicketWebServiceInRestlet extends ServerResource implements ITicket
 		}
 		
 	}
-
-	@Path("/seat")
-	@GET
-	@Produces("text/plain")
+	
+	@Get("txt")
 	public String getSeatNumbers() {
 		return _ITicketPoolBLL.getTickets();
 		

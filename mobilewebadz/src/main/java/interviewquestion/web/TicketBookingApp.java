@@ -13,7 +13,7 @@ public class TicketBookingApp extends Application {
 	public synchronized Restlet createInboundRoot(){ 
 	 Router router = new Router(getContext());
 	 router.attach("/seat", TicketWebServiceInRestlet.class);
-	 router.attach("/seat/book", TicketWebServiceInRestlet.class);
+	 router.attach("/seat/book", TicketBookReource.class);
 	 router.attach("/seat/cancel/{tikcetId}", TicketWebServiceInRestlet.class);
 	 return router;
 	}
