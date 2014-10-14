@@ -13,7 +13,7 @@ public class TicketCancelResource extends TicketWebServiceInRestlet {
 	@Put("txt")
 	public String cacnelTicket()
 	{
-		return (cancelOneTicket(ticketId)==true)?"Ticket "+ticketId+"canceled!":"Fail to cancel";
+		return (cancelOneTicket(ticketId)==true)?"{Ticket "+ticketId+"Booking canceled!}":"Fail to cancel";
 		
 		
 	}

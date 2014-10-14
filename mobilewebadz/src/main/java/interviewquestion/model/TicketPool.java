@@ -1,22 +1,27 @@
 package interviewquestion.model;
 
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ThreadLocalRandom;
-
 import interviewquestion.bll.ITicketPoolBLL;
 
 
 
 public class TicketPool implements ITicketPoolBLL
 {
-	private static long ticketNumber=0;
+	private static int ticketIdLength=32;
 	private static TicketPool _TicketPool=null;
-	private static ConcurrentHashMap<String, Integer> _tickeIdRef=new ConcurrentHashMap<String,Integer>();
-
+	private static ConcurrentLinkedQueue<String> _tickeIdRef=new ConcurrentLinkedQueue<String>();
+    private static HashSet<String> _ticketBackupHashSet=new HashSet<String>();
 	public TicketPool(long totalTicketNumber)
 	{
-		ticketNumber=totalTicketNumber;
+		
+		for(int i=0;i<totalTicketNumber;i++)
+		{
+			String oneTicketId=random(ticketIdLength);
+			_tickeIdRef.add(oneTicketId);
+			_ticketBackupHashSet.add(oneTicketId);
+		}
 	}
 	public  void initialTheTicketPool(long ticketPoolSize)
 	{
@@ -38,9 +43,11 @@ public class TicketPool implements ITicketPoolBLL
 	public boolean increaseOneTicket(String ticketId) {
 		// TODO Auto-generated method stub
 		try {
-			if(_tickeIdRef.containsKey(ticketId))
+			//if the incoming ticket Id exist in ticket id backup, this means the ticketId is a valid one
+			if(_ticketBackupHashSet.contains(ticketId))
 			{
-				ticketNumber++;
+				
+				_tickeIdRef.add(ticketId);
 				return true;
 			}
 			else {
@@ -56,17 +63,22 @@ public class TicketPool implements ITicketPoolBLL
 	public String decreaseOneTicket() {
 		// TODO Auto-generated method stub
 				try {
-					ticketNumber--;
-					String idGenerated=random(32);//Generate the reference ID
-					_tickeIdRef.put(idGenerated, 1);
+					if(_tickeIdRef.size()!=0)
+					{
+					String idGenerated=_tickeIdRef.poll();//Generate the reference ID
+					
 					return idGenerated;
+					}
+					else {
+						return "";
+					}
 				} catch (Exception e) {
 					return "";
 				}
 	}
 	@Override
 	public String getTickets() {
-		String returnString=String.valueOf(ticketNumber);
+		String returnString=String.valueOf(_tickeIdRef.size());
 		return returnString;
 	}
 	

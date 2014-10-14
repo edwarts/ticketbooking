@@ -7,7 +7,15 @@ public class TicketBookReource extends TicketWebServiceInRestlet{
 	@Get("txt")
 	public String Booking()
 	{
-		return "{ booking:"+bookOneTicket()+"}";
+		String bookedTicket=bookOneTicket();
+		if(bookedTicket!="")
+		{
+			return "{ booking:"+bookedTicket+"}";
+			
+		}
+		else {
+			return "{404 tickets not available}";
+		}
 	}
 
 }
