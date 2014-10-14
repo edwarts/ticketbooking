@@ -10,7 +10,7 @@ public class TicketAppFileBasedFactory implements ITicketFactory{
 		switch (instanceName) {
 		case "TicketPool":
 			try {
-				return TicketPool.getTicketPool();
+				return TicketPool.getTicketPool(50L);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

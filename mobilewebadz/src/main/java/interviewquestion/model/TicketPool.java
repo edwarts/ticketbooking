@@ -27,11 +27,11 @@ public class TicketPool implements ITicketPoolBLL
 	{
 		_TicketPool=new TicketPool(ticketPoolSize);
 	}
-	public static TicketPool getTicketPool() throws Exception
+	public static TicketPool getTicketPool(long ticketPoolSize) throws Exception
 	{
 		if(_TicketPool==null)
 		{
-			_TicketPool=new TicketPool(50);
+			_TicketPool=new TicketPool(ticketPoolSize);
 			return _TicketPool;
 		}
 		else {

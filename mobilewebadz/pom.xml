@@ -41,4 +41,5 @@
         <version>${restlet-version}</version>
     </dependency>
   </dependencies>
+  <!-- for one jar -->
 </project>
