@@ -1,5 +1,7 @@
 package interviewquestion;
 
+import java.util.Properties;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -35,4 +37,13 @@ public class AppTest
     {
         assertTrue( true );
     }
+//    @org.junit.Test
+//    public void readProperty()
+//    {
+//    	
+//    	Properties properties=new Properties();
+//    	int port=(int) properties.get("port");
+//    	assertEquals(8000,port );
+//    	
+//    }
 }
